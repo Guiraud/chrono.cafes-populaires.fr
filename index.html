@@ -58,7 +58,7 @@
   }
 var totalSeconds; //Nombre total de secondes sur le minuteur
 //var temps = prompt("Entrer le temps","")*60;
-var temps = 100*60;
+var temps = 0;
 var starter = true;
 console.log(starter);
 
@@ -87,9 +87,9 @@ starter = false;
 
 function Timer_Tick()
 {
-  if (totalSeconds > 0) // S'il reste du temps ...
-  {
-    totalSeconds--; // Décrémenter le nombre total de secondes
+  //if (totalSeconds > 0) // S'il reste du temps ...
+  
+	  totalSeconds++; // Décrémenter le nombre total de secondes
   
   var seconds = totalSeconds % 60; //Recalculer les valeurs de minuterie et afficher ensuite
   var secondsTens = Math.floor(seconds / 10);
@@ -99,13 +99,5 @@ function Timer_Tick()
   document.getElementById("chrono").innerHTML = totalSeconds; 
   document.getElementById("create").innerHTML = "" + minutes + ":" + secondsTens + secondsOnes; 
   }
-  else
-    {
-
-      document.getElementById("audio").play()
-      alert('Fin !')
-    }
-}
-
-</script>
+  </script>
 </html>
