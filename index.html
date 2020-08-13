@@ -1,0 +1,111 @@
+<html>
+	<head>
+		<Title> Chrono </Title>
+		<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+		<meta content="utf-8" http-equiv="encoding">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+			<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>    
+
+	</head>
+	<Body>
+		<div data-role="page">
+			<input type="text" id="nouveau_nom">
+			<input onclick="change();" type="button" value="changer" id="Create_btn"></input>
+			<form id="cercle">
+				<input type="radio" name="radioName" value="btn1" /><label for="btn1"> 1 </label><br />
+				<input type="radio" name="radioName" value="btn2" /><label for="btn2"> 2 </label><br />
+				<input type="radio" name="radioName" value="btn3" /><label for="btn3"> 3 </label><br />
+				<input type="radio" name="radioName" value="btn4" /><label for="btn4"> 4 </label><br />
+			</form>
+	<table><tr><td>
+		<button onClick="StartTimer('Silence');createDiv();">Silence</button><br></td></tr>
+		<tr>
+			<td>	
+				<input type="button" id="btn1"></input></td>
+			<td>
+				<input type="button" id="btn2"></input></td>
+			<td>
+				<input type="button" id="btn3"></input></td>
+			<td>
+				<input type="button" id="btn4"></input></td>
+		</tr></table>
+		<div id="chrono" name="nv_bouton"></div>
+		<div id="create" name="nv_bouton">
+  		</div>
+  			<div id="getText" style="display: none;">
+    				INNERHTML
+  			</div>
+		</div>
+</body>
+<script>
+	function change() // no ';' here
+	{
+		//console.log($("#nouveau_nom").val());
+		//console.log($('input[name=radioName]:checked', '#cercle').val());
+		var alter = $("#nouveau_nom").val();
+		var bouton = $('input[name=radioName]:checked', '#cercle').val();
+		$("#"+bouton).val($("#btn1").val() === "changer" ? "changer" : $("#nouveau_nom").val());
+		$("#"+bouton).attr('onClick', 'StartTimer("'+alter+'");createDiv();');
+		$('input[name=radioName]:checked', '#cercle').text = alter;
+		$('label[for='+bouton+']').html($("#nouveau_nom").val());
+		$("#"+bouton).attr('id', $("#nouveau_nom").val());
+	
+	}
+  function createDiv() {
+    var div = document.createElement('div');
+    div.innerHTML = document.getElementById('create').innerHTML;
+    document.body.appendChild(div);
+  }
+var totalSeconds; //Nombre total de secondes sur le minuteur
+//var temps = prompt("Entrer le temps","")*60;
+var temps = 100*60;
+var starter = true;
+console.log(starter);
+
+
+function StartTimer( participants)
+{
+	if (starter) {
+	totalSeconds = temps; //Défini le nombre de secondes restantes
+   	setInterval("Timer_Tick()", 1000);// Démarrer le minuteur, régler pour s'éteindre toutes les secondes
+	}
+starter = false; 
+	
+  // totalSeconds = temps; //Défini le nombre de secondes restantes
+  
+  var seconds = totalSeconds % 60; //calculer les secondes restantes
+  var secondsTens = Math.floor(seconds / 10);
+  var secondsOnes = seconds % 10;
+  var minutes = Math.floor(totalSeconds / 60);
+  $('#'+participants).text =$('#'+participants).text() +  seconds;
+  console.log(totalSeconds);
+  
+   //document.getElementById(participants).innerHTML = totalSeconds ;
+	document.getElementById("create").innerHTML = "" + minutes + ":" + secondsTens + secondsOnes + "\t;\t "+ totalSeconds+ "\t;\t" + participants + "<br>"; //montre minuterie  
+}
+
+
+function Timer_Tick()
+{
+  if (totalSeconds > 0) // S'il reste du temps ...
+  {
+    totalSeconds--; // Décrémenter le nombre total de secondes
+  
+  var seconds = totalSeconds % 60; //Recalculer les valeurs de minuterie et afficher ensuite
+  var secondsTens = Math.floor(seconds / 10);
+  var secondsOnes = seconds % 10;
+  var minutes = Math.floor(totalSeconds / 60);
+  
+  document.getElementById("chrono").innerHTML = totalSeconds; 
+  document.getElementById("create").innerHTML = "" + minutes + ":" + secondsTens + secondsOnes; 
+  }
+  else
+    {
+
+      document.getElementById("audio").play()
+      alert('Fin !')
+    }
+}
+
+</script>
+</html>
