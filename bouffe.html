@@ -9,6 +9,12 @@
 
 	</head>
 	<Body>
+        <div style="font-size: xx-large;text-align: center;" id="Compteur">
+        </div>
+            <div id="getText" style="display: none;">
+                  INNERHTML
+            </div>
+      </div>
         <div
         ><center>
             <input style="font-size: xx-large;text-align: center;" onclick="StartChrono();" type="button"  id="btn1" value="Lancer ! "></input></td>
@@ -30,19 +36,27 @@
     </div>
     </body>
 <script>
+    var compteur = 0;
     function StartChrono()
 {
+   
+    
+    if(typeof compteur !== 'undefined')
+        compteur++;
+    else
+        {
+            console.log("Définition = " + compteur);
+        }
+   
+    total =  compteur*20;
+    var seconds = total % 60; //calculer les secondes restantes
+    var secondsTens = Math.floor(seconds / 10);
+    var secondsOnes = seconds % 10;
+    var minutes = Math.floor(total / 60);
+    document.getElementById("Compteur").innerHTML = "Bouchée N°" + compteur + "\t;\t" + "<br> Durée du repas : " + minutes + ":" + secondsTens + secondsOnes; //montre minuterie
+
 	totalSeconds = 0;
    	chronoTPS = setInterval("Timer_Tick()", 1000);// Démarrer le minuteur, régler pour s'éteindre toutes les secondes
-starter = false; 
-	
-  var seconds = totalSeconds % 60; //calculer les secondes restantes
-  var secondsTens = Math.floor(seconds / 10);
-  var secondsOnes = seconds % 10;
-  var minutes = Math.floor(totalSeconds / 60);
-  console.log(totalSeconds);
-  
-    //document.getElementById("Chrono").innerHTML = "" + minutes + ":" + secondsTens + secondsOnes + "\t;\t "+ totalSeconds+ "\t;\t" + "<br>"; //montre minuterie  
 }
 function Timer_Tick()
 {
