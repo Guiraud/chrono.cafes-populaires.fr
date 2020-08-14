@@ -49,12 +49,16 @@ function Timer_Tick()
     if (totalSeconds >= 20) {
             $("#Chrono").css("background-color","green");
             clearInterval(chronoTPS);
+            document.getElementById("Chrono").innerHTML = "La prochaine bouchée est une promesse !";
             }
         else
-            $("#Chrono").css("background-color","orange");
+            
+            {$("#Chrono").css("background-color","orange");
+            document.getElementById("Chrono").innerHTML = "Respire";}
     else
-    $("#Chrono").css("background-color","red");
-  document.getElementById("Chrono").innerHTML = "" + minutes + ":" + secondsTens + secondsOnes; 
+    {document.getElementById("Chrono").innerHTML = "Savoure !";
+    $("#Chrono").css("background-color","red");}
+  //document.getElementById("Chrono").innerHTML = "" + minutes + ":" + secondsTens + secondsOnes; 
   }
 </script>
 </html>
