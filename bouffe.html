@@ -1,6 +1,7 @@
 <html>
 	<head>
-		<Title>Satiété</Title>
+        <Title>Satiété</Title>
+        <link rel="icon" href="satiete_img/favicon-satiete.ico" />
 		<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
 		<meta content="utf-8" http-equiv="encoding">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,8 +9,10 @@
 
 	</head>
 	<Body>
-        <div>
+        <div
+        ><center>
             <input style="font-size: xx-large;text-align: center;" onclick="StartChrono();" type="button"  id="btn1" value="Lancer ! "></input></td>
+        </center>
         </div>
         <div style="font-size: xx-large;text-align: center;" id="Chrono" name="nv_bouton">
         </div>
@@ -17,6 +20,14 @@
                   INNERHTML
             </div>
       </div>
+      <div style="font-size: xx-large;text-align:justify;align-content: center;border: 50px;">
+        <p>Satiété : État d'une personne dont la faim est entièrement satisfaite, qui est rassasiée jusqu'au dégoût. </p>
+        <p>Le fait de mâcher provoque après 15 à 20 minutes la libération par le cerveau d’un neurotransmetteur : l’histamine.</p>
+        <p>D'après le <a href ="https://www6.clermont.inrae.fr/unh/Pages-personnelles/IMPROVING/Dr-Marie-Agnes-PEYRON">Dr Marie-Agnès PEYRON</a> : <br>
+        La déstructuration de l'aliment permet la libération de constituants alimentaires, notamment des nutriments, qui sont solubilisés dans la salive et/ou deviennent accessibles aux enzymes salivaires puis intestinales. Lorsque la mastication est déficiente, par exemple en cas d'édentement, le bol dégluti est constitué de gros morceaux difficiles à avaler, mais qui entraînent également un ralentissement de la digestion, ou encore une mauvaise extraction des nutriments de la matrice alimentaire ce qui résulte en un déficit de leur assimilation. 
+    </p>
+    <p>L'étude des signaux sensoriels alimentaires générés au cours de la mastication et initiateurs de réflexes de phase céphalique ayant des conséquence sur le métabolisme. L'activité mécanique de mastication, la transformation de l'aliment, ou encore les propriétés physiques du bol alimentaire, sont suspectées d'être à l'origine de signaux destinés à préparer le tube digestif pour une utilisation optimale de l'aliment ingéré. </p>
+    </div>
     </body>
 <script>
     function StartChrono()
@@ -56,8 +67,8 @@ function Timer_Tick()
             {$("#Chrono").css("background-color","orange");
             document.getElementById("Chrono").innerHTML = "Respire";}
     else
-    {document.getElementById("Chrono").innerHTML = "Savoure !";
-    $("#Chrono").css("background-color","red");}
+    {document.getElementById("Chrono").innerHTML = "Savoure et mastique (40 fois)!";
+    $("#Chrono").css("background-color","red");} 
   //document.getElementById("Chrono").innerHTML = "" + minutes + ":" + secondsTens + secondsOnes; 
   }
 </script>
