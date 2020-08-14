@@ -1,0 +1,51 @@
+<html>
+	<head>
+		<Title>Bouffe</Title>
+		<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+		<meta content="utf-8" http-equiv="encoding">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>    
+
+	</head>
+	<Body>
+        <div>
+            <input onclick="StartChrono();" type="button"  id="btn1" value="Lancer ! "></input></td>
+        </div>
+        <div id="Chrono" name="nv_bouton">
+        </div>
+            <div id="getText" style="display: none;">
+                  INNERHTML
+            </div>
+      </div>
+    </body>
+<script>
+    function StartChrono()
+{
+	totalSeconds = 0;
+   	setInterval("Timer_Tick()", 1000);// Démarrer le minuteur, régler pour s'éteindre toutes les secondes
+starter = false; 
+	
+  var seconds = totalSeconds % 60; //calculer les secondes restantes
+  var secondsTens = Math.floor(seconds / 10);
+  var secondsOnes = seconds % 10;
+  var minutes = Math.floor(totalSeconds / 60);
+  console.log(totalSeconds);
+  
+    document.getElementById("Chrono").innerHTML = "" + minutes + ":" + secondsTens + secondsOnes + "\t;\t "+ totalSeconds+ "\t;\t" + "<br>"; //montre minuterie  
+}
+function Timer_Tick()
+{
+  //if (totalSeconds > 0) // S'il reste du temps ...
+  
+	  totalSeconds++; // Décrémenter le nombre total de secondes
+  
+  var seconds = totalSeconds % 60; //Recalculer les valeurs de minuterie et afficher ensuite
+  var secondsTens = Math.floor(seconds / 10);
+  var secondsOnes = seconds % 10;
+  var minutes = Math.floor(totalSeconds / 60);
+  
+  document.getElementById("Chrono").innerHTML = totalSeconds; 
+  document.getElementById("Chrono").innerHTML = "" + minutes + ":" + secondsTens + secondsOnes; 
+  }
+</script>
+</html>
